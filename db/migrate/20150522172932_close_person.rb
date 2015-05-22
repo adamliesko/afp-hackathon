@@ -1,6 +1,6 @@
 class ClosePerson < ActiveRecord::Migration
   def change
-    create_table :admissions do |t|
+    create_table :close_persons do |t|
       t.belongs_to :admission, index: true
       t.string :institution, index: true
       t.string :function, index: true

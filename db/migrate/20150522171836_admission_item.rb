@@ -1,6 +1,6 @@
 class AdmissionItem < ActiveRecord::Migration
   def change
-    create_table :admissions do |t|
+    create_table :admission_items do |t|
       t.belongs_to :admission, index: true
       t.string :name, index: true
       t.float :value, index: true
