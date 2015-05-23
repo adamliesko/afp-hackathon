@@ -235,8 +235,12 @@ DEPENDENCIES
   high_voltage
   jbuilder (~> 2.0)
   jquery-rails
+<<<<<<< HEAD
   pdf-reader
   pdftohtmlr
+=======
+  nokogiri
+>>>>>>> HTML pasring script
   pg
   pry-rails
   pry-rescue
