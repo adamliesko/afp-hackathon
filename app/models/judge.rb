@@ -1,22 +1,72 @@
 class Judge < ActiveRecord::Base
 has_many :admissions
 
-<<<<<<< HEAD
-filterrific(
+  filterrific(
     default_filter_params: { sorted_by: 'name_asc' },
     available_filters: [
-        :sorted_by,
-        :search_query
+      :sorted_by,
+      :search_query
     ]
-)
+  )
 
-=======
+scope :with_country_id, lambda { |country_ids|
+  where(country_id: [*country_ids])
+}
+
+scope :search_query, lambda { |query|
+  return nil  if query.blank?
+  query = I18n.transliterate(query)
+
+  # condition query, parse into individual keywords
+  terms = query.downcase.split(/\s+/)
+
+  # replace "*" with "%" for wildcard searches,
+  # append '%', remove duplicate '%'s
+  terms = terms.map { |e|
+    (e.gsub('*', '%') + '%').gsub(/%+/, '%')
+  }
+  # configure number of OR conditions for provision
+  # of interpolation arguments. Adjust this if you
+  # change the number of OR conditions.
+  num_or_conds = 2
+  where(
+    terms.map { |term|
+      "(LOWER(unaccent(judges.name) LIKE ? OR LOWER(unaccent(judges.court)) LIKE ?)"
+    }.join(' AND '),
+    *terms.map { |e| [e] * num_or_conds }.flatten
+  )
+}
+
+scope :sorted_by, lambda { |sort_option|
+  # extract the sort direction from the param value.
+  direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
+  case sort_option.to_s
+  when /^court_/
+
+    order("judges.court #{ direction }")
+  when /^name_/
+    # Simple sort on the name colums
+    order("LOWER(judges.name) #{ direction }")
+  else
+    raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+  end
+}
+
+  def self.options_for_sorted_by
+    [
+      ['Name (a-z)', 'name_asc'],
+      ['Name (z-a)', 'name_desc'],
+      ['Court (a-z)', 'court_asc'],
+      ['Court (z-a)', 'court_desc'],
+    ]
+  end
+
   def parse
     require 'rubygems'
     require 'nokogiri'
     require 'open-uri'
 
-    (1..15).each do |i| #2873
+    (1..2873).each do |i| #2873
       begin
         page = Nokogiri::HTML(open("http://www.sudnarada.gov.sk/mps/Priznanie#{i}.html"))
       rescue OpenURI::HTTPError
@@ -103,5 +153,5 @@ filterrific(
     end
 
   end
->>>>>>> c28c6bf3082a01551a387aa1e7e5b551747a4c4e
+
 end
