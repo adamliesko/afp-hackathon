@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20150522210651) do
   add_index "admissions", ["proclamation6"], name: "index_admissions_on_proclamation6", using: :btree
   add_index "admissions", ["year"], name: "index_admissions_on_year", using: :btree
 
-  create_table "close_persons", force: :cascade do |t|
+  create_table "close_people", force: :cascade do |t|
     t.integer "admission_id"
     t.string  "institution"
     t.string  "function"
@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 20150522210651) do
     t.string  "title_back"
   end
 
-  add_index "close_persons", ["admission_id"], name: "index_close_persons_on_admission_id", using: :btree
-  add_index "close_persons", ["function"], name: "index_close_persons_on_function", using: :btree
-  add_index "close_persons", ["institution"], name: "index_close_persons_on_institution", using: :btree
-  add_index "close_persons", ["name"], name: "index_close_persons_on_name", using: :btree
+  add_index "close_people", ["admission_id"], name: "index_close_people_on_admission_id", using: :btree
+  add_index "close_people", ["function"], name: "index_close_people_on_function", using: :btree
+  add_index "close_people", ["institution"], name: "index_close_people_on_institution", using: :btree
+  add_index "close_people", ["name"], name: "index_close_people_on_name", using: :btree
 
   create_table "judges", force: :cascade do |t|
     t.string "name"
