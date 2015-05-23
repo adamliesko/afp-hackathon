@@ -15,7 +15,7 @@ scope :with_country_id, lambda { |country_ids|
 
 scope :search_query, lambda { |query|
   return nil  if query.blank?
-  query = I18n.transliterate(query)
+
 
   # condition query, parse into individual keywords
   terms = query.downcase.split(/\s+/)
@@ -31,7 +31,7 @@ scope :search_query, lambda { |query|
   num_or_conds = 2
   where(
     terms.map { |term|
-      "(LOWER(unaccent(judges.name) LIKE ? OR LOWER(unaccent(judges.court)) LIKE ?)"
+      "LOWER(name) LIKE ? OR LOWER(court) LIKE ?"
     }.join(' AND '),
     *terms.map { |e| [e] * num_or_conds }.flatten
   )
@@ -44,9 +44,10 @@ scope :sorted_by, lambda { |sort_option|
   when /^court_/
 
     order("judges.court #{ direction }")
-  when /^name_/
+    when /^name_/
+
     # Simple sort on the name colums
-    order("LOWER(judges.name) #{ direction }")
+    order("LOWER(reverse(split_part(judges.name, ' ', 1))) #{ direction }")
   else
     raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
   end

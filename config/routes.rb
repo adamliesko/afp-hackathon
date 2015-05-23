@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
   root to: 'visitors#index'
-  resources :judges
+  resources :judges do
+    resources :admissions
+  end
+
 end

@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20150523122459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "admission_items", force: :cascade do |t|
     t.integer "admission_id"

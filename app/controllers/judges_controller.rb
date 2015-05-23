@@ -4,6 +4,10 @@ class JudgesController < ApplicationController
     @stats = Judge.stats
   end
 
+  def show
+    @judge = Judge.find(params[:id])
+  end
+
   def index
  @filterrific = initialize_filterrific(
       Judge,

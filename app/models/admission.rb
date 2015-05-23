@@ -29,10 +29,10 @@ def parse filename
 	  	end
 
 		if i == 1
-			@judge = Judge.find_or_create_by(name: row.first.strip)
+			@judge = Judge.find_or_create_by(name: row.strip)
 		elsif i == 3
 			year = row.scan(/\d+/).first 
-			@admission = Admission.create(judge: @judge, year: year, url: "http://mps.sudnarada.gov.sk/data/att/#{filename}")
+			@admission = Admission.create(judge: @judge, year: year, url: "http://mps.sudnarada.gov.sk/data/att/#{filename.scan(/\d+/).first }.pdf")
 	  	else
 	    create_admission_item sheet, i, category if category
 	  	end
