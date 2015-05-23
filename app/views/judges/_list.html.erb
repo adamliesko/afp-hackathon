@@ -1,0 +1,22 @@
+<%# app/views/students/_list.html.erb %>
+<div id="filterrific_results">
+
+  <div>
+    <%= page_entries_info judges # provided by will_paginate %>
+  </div>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Court</th>
+    </tr>
+    <% judges.each do |judge| %>
+      <tr>
+        <td><%= link_to(judge.name, judge_path(judge)) %></td>
+        <td><%= student.court %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate judges # provided by will_paginate %>

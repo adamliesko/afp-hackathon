@@ -6,6 +6,5 @@ namespace :parse do
       adm = Admission.new
       adm.parse("/Users/Adam/afp/#{filename}")
     end
-
   end
 end
