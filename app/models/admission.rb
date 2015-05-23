@@ -1,5 +1,6 @@
 class Admission < ActiveRecord::Base
 has_many :admission_items
+has_many :close_people
 belongs_to :judge
 PARTS = {'estate' => 'Zoznam nehnuteľností','chattel' => 'Hnuteľné veci','property_rights' => 'Majetkové práva','income' =>'Príjem z výkonu funkcie sudcu','monetary_obligation' => 'Peňažné záväzky',
 	'chattel_and_property_rights'=> 'Súbor hnuteľných vecí a majetkových práv', 'benefits' => 'Príjmy a iné pôžitky', 'close_person' => 'Zoznam blízkych osôb'}

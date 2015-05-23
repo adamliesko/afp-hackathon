@@ -1,7 +1,7 @@
 <h2><%=@judge.name%></h2>
 <ul class="nav nav-tabs">
 <% @judge.admissions.each do |adm| %>
-    <%=adm.id%>
+
   <li role="presentation" class="active"><a data-toggle="tab" href="#admission-<%=adm.year%>"><%= adm.year%></a></li>
   <%end%>
 </ul>
