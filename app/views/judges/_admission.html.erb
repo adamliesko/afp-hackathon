@@ -127,7 +127,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	 <% admission.admission_items.each do |item|%>
+	 <% admission.admission_items{|i| i.category = 'chattel_and_property_rights'}.each do |item|%>
 	 		 <tr>
 	 	<td><%=item.name%></td>
 	 	<td><%=item.acquisition_date%></td>
@@ -167,19 +167,16 @@
  <caption>Blízke osoby</caption>
 	<thead>
 		<tr>
-			<th>Názov</th>
-			<th>Dátum nadobudnutia</th>
-			<th>Cena</th>
-			<th>Veľkosť podielu</th>
-			<th>Forma vlastníctva</th>
-			<th>Zmena</th>
+			<th>Meno</th>
+			<th>Inštitúcia</th>
+			<th>Funkcia</th>
 		</tr>
 	</thead>
 	<tbody>
-	 <% admission.close_people.each do |item|%>
-	 	<td><%=item.name%></td>
-	 	<td><%=item.value%></td>
+	 <% admission.close_people.each do |p|%>
+	 	<td><%=p.name%></td>
+	 		<td><%=p.institution%></td>
+	 			<td><%=p.function%></td>
  	<%end%>
  	<tbody>
 <table>
-

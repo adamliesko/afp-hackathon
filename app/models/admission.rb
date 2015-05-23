@@ -30,7 +30,7 @@ def parse filename
 	  	end
 
 		if i == 1
-			@judge = Judge.find_or_create_by(name: row.strip)
+			@judge = Judge.where('lower(name) = ?', row.strip.downcase).first_or_create(:name=>row.strip)
 		elsif i == 3
 			year = row.scan(/\d+/).first 
 			@admission = Admission.create(judge: @judge, year: year, url: "http://mps.sudnarada.gov.sk/data/att/#{filename.scan(/\d+/).first }.pdf")
