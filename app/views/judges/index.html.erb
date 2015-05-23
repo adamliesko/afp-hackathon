@@ -10,15 +10,6 @@
   * sets form_for options like :url, :method and input name prefix
 %>
 <%= form_for_filterrific @filterrific do |f| %>
-  <div>
-    Search
-    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-    <%= f.text_field(
-                :search_query,
-                class: 'filterrific-periodically-observed'
-        ) %>
-  </div>
-  <div>
 
   <div>
     Sorted by

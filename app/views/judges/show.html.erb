@@ -1,43 +1,17 @@
 <h2><%=@judge.name%></h2>
-<ul class="nav nav-tabs" id="myTab">
-  <%i = 0%>
+<ul class="nav nav-tabs">
 <% @judge.admissions.each do |adm| %>
-<%if i ==0 %>
-  <li class="active" role="presentation" class="active"><a data-toggle="tab" href="#admission-<%=adm.year%>"><%= adm.year%></a></li>
-<%else%>
- <li role="presentation" class="active"><a data-toggle="tab" href="#admission-<%=adm.year%>"><%= adm.year%></a></li>
-		<%end%>
+
+  <li role="presentation" class="active"><a data-toggle="tab" href="#admission-<%=adm.year%>"><%= adm.year%></a></li>
   <%end%>
 </ul>
 
   <div class="tab-content">
-  <%i = 0%>
       <% @judge.admissions.each do |adm| %>
+
       <h4>Majetkové priznanie sudcu za rok <%= adm.year%></h4>
-      <%if i ==0 %>
-		<div id="admission-<%=adm.year%>" class="tab-pane fade in active">
-		<%else%>
-		<div id="admission-<%=adm.year%>" class="tab-pane fade">
-		<%end%>
+<div id="admission-<%=adm.year%>" class="tab-pane fade in active">
+
         <%= render 'admission', admission: adm %>
-        </div>
-        <%i +=1 %>
       <%end%>
     </div>
-
-0
-<script type="text/javascript">
-
-$(document).ready(function(){ 
-
-    $("#myTab a").click(function(e){
-
-        e.preventDefault();
-
-        $(this).tab('show');
-
-    });
-
-});
-
-</script>

@@ -11,6 +11,8 @@ gem 'roo', '~> 2.0.0'
 gem 'filterrific'
 gem 'nokogiri'
 gem 'will_paginate'
+
+gem 'bootstrap-sass'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
