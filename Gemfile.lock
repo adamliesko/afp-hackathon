@@ -72,16 +72,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.7)
     execjs (2.5.2)
-<<<<<<< HEAD
-    ffi (1.9.8)
-    ffi-extra (0.1.0)
-      ffi
-    ffi-inline (0.0.4.3)
-      ffi (>= 0.4.0)
     filterrific (2.0.5)
       rails (>= 3.1.0)
-=======
->>>>>>> c28c6bf3082a01551a387aa1e7e5b551747a4c4e
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     high_voltage (2.3.0)
