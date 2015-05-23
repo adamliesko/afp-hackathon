@@ -5,9 +5,13 @@ class JudgesController < ApplicationController
   end
 
   def index
-    @filterrific = initialize_filterrific(
-        Judge,
-        params[:filterrific]
+ @filterrific = initialize_filterrific(
+      Judge,
+      params[:filterrific],
+      select_options: {
+        sorted_by: Judge.options_for_sorted_by,
+      },
+      
     ) or return
     @judges= @filterrific.find.page(params[:page])
 
