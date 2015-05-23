@@ -101,7 +101,7 @@ scope :sorted_by, lambda { |sort_option|
                          \n Nadobudnutie: #{row.css("div.sbjp")[1].text}
                          \n Datum: #{row.css("div.sbjp")[2].text}
                          \n Zmena: #{row.css("div.sbjp")[3].text}"
-                    AdmissionItem.create(admission_id: admission.id, name: row.css("div.sbjp")[0].text, change: row.css("div.sbjp")[3].text, acquisition_date: row.css("div.sbjp")[2].text, acquisition_reason: row.css("div.sbjp")[1].text)
+                    AdmissionItem.create(admission_id: admission.id, name: row.css("div.sbjp")[0].text, change: row.css("div.sbjp")[3].text, acquisition_date: row.css("div.sbjp")[2].text, acquisition_reason: row.css("div.sbjp")[1].text, category: "estate")
                   end
                 end
               when "Hnuteľný majetok"
@@ -113,7 +113,7 @@ scope :sorted_by, lambda { |sort_option|
                          \n Datum: #{row.css("div.sbjp")[2].text}
                          \n Cena: #{row.css("div.sbjp")[3].text}
                          \n Zmena: #{row.css("div.sbjp")[4].text}"
-                    AdmissionItem.create(admission_id: admission.id, name: row.css("div.sbjp")[0].text, value: row.css("div.sbjp")[3].text, change: row.css("div.sbjp")[4].text, acquisition_date: row.css("div.sbjp")[2].text, acquisition_reason: row.css("div.sbjp")[1].text)
+                    AdmissionItem.create(admission_id: admission.id, name: row.css("div.sbjp")[0].text, value: row.css("div.sbjp")[3].text, change: row.css("div.sbjp")[4].text, acquisition_date: row.css("div.sbjp")[2].text, acquisition_reason: row.css("div.sbjp")[1].text, category: "chattel")
                   end
                 end
               when "Majetkové práva"
@@ -125,7 +125,7 @@ scope :sorted_by, lambda { |sort_option|
                          \n Datum: #{row.css("div.sbjp")[2].text}
                          \n Cena: #{row.css("div.sbjp")[3].text}
                          \n Zmena: #{row.css("div.sbjp")[4].text}"
-                    AdmissionItem.create(admission_id: admission.id, name: row.css("div.sbjp")[0].text, value: row.css("div.sbjp")[3].text, change: row.css("div.sbjp")[4].text, acquisition_date: row.css("div.sbjp")[2].text, acquisition_reason: row.css("div.sbjp")[1].text)
+                    AdmissionItem.create(admission_id: admission.id, name: row.css("div.sbjp")[0].text, value: row.css("div.sbjp")[3].text, change: row.css("div.sbjp")[4].text, acquisition_date: row.css("div.sbjp")[2].text, acquisition_reason: row.css("div.sbjp")[1].text, category: "property_rights")
                   end
                 end
               when "Závazky predmetom ktorých je peňažné plnenie"
@@ -136,7 +136,7 @@ scope :sorted_by, lambda { |sort_option|
                          \n Nadobudnutie: #{row.css("div.sbjp")[1].text}
                          \n Datum: #{row.css("div.sbjp")[2].text}
                          \n Zmena: #{row.css("div.sbjp")[3].text}"
-                    AdmissionItem.create(admission_id: admission.id, name: row.css("div.sbjp")[0].text, change: row.css("div.sbjp")[3].text, acquisition_date: row.css("div.sbjp")[2].text, acquisition_reason: row.css("div.sbjp")[1].text)
+                    AdmissionItem.create(admission_id: admission.id, name: row.css("div.sbjp")[0].text, change: row.css("div.sbjp")[3].text, acquisition_date: row.css("div.sbjp")[2].text, acquisition_reason: row.css("div.sbjp")[1].text, category: "monetary_obligation")
                   end
                 end
             end
